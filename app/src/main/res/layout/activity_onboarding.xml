@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_500"
+    android:padding="24dp"
+    tools:context=".presentation.onboarding.OnboardingActivity">
+
+    <!-- Welcome Title -->
+    <TextView
+        android:id="@+id/tvWelcomeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Word Game!"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Game Description -->
+    <TextView
+        android:id="@+id/tvGameDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Guess the secret word and climb the leaderboard!\n\n• Start with 100 points\n• Use hints wisely\n• Beat the timer\n• Challenge players worldwide"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcomeTitle" />
+
+    <!-- Name Input Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardNameInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGameDescription">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Your Name"
+                android:textAlignment="center"
+                android:textColor="@color/purple_700"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPlayerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Player Name"
+                app:boxStrokeColor="@color/purple_500"
+                app:hintTextColor="@color/purple_700"
+                app:startIconDrawable="@drawable/ic_notifications_black_24dp"
+                app:startIconTint="@color/purple_500"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPlayerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLength="20"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Start Game Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStartGame"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:text="Start Playing"
+        android:textColor="@color/purple_700"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="32dp"
+        app:icon="@drawable/ic_home_black_24dp"
+        app:iconGravity="textStart"
+        app:iconTint="@color/purple_700"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardNameInput"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <!-- Loading Progress -->
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicatorColor="@color/white"
+        app:trackColor="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="@+id/btnStartGame"
+        app:layout_constraintEnd_toEndOf="@+id/btnStartGame"
+        app:layout_constraintStart_toStartOf="@+id/btnStartGame"
+        app:layout_constraintTop_toTopOf="@+id/btnStartGame" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
