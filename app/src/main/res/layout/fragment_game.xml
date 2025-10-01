@@ -258,6 +258,42 @@
 
         </LinearLayout>
 
+        <!-- Secondary Action Buttons -->
+        <LinearLayout
+            android:id="@+id/layoutSecondaryButtons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutActionButtons">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLeaderboard"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="🏆 Leaderboard"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNewGame"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="🎮 New Game"
+                android:textSize="12sp"
+                app:cornerRadius="8dp" />
+
+        </LinearLayout>
+
         <!-- Guess History Card -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardGuessHistory"
@@ -268,7 +304,7 @@
             app:cardElevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutActionButtons">
+            app:layout_constraintTop_toBottomOf="@+id/layoutSecondaryButtons">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -306,24 +342,6 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-        <!-- New Game Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNewGame"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="New Game"
-            android:textSize="16sp"
-            app:backgroundTint="@color/teal_200"
-            app:cornerRadius="8dp"
-            app:icon="@drawable/ic_home_black_24dp"
-            app:iconGravity="textStart"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardGuessHistory" />
 
         <!-- Loading Progress -->
         <com.google.android.material.progressindicator.CircularProgressIndicator

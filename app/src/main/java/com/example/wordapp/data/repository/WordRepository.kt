@@ -156,8 +156,29 @@ class WordRepository @Inject constructor(
             return Result.failure(Exception("Hints available after 5 wrong attempts!"))
         }
         
-        // For now, provide a simple hint. Later we'll integrate with Rhyme/Thesaurus APIs
-        val hint = generateSimpleHint(currentState.secretWord)
+        val hint = try {
+            // First try to get a rhyme
+            val rhymeResponse = wordApiService.getRhymes(currentState.secretWord)
+            if (rhymeResponse.isSuccessful && !rhymeResponse.body()?.rhymes.isNullOrEmpty()) {
+                val rhymes = rhymeResponse.body()!!.rhymes
+                val selectedRhyme = rhymes.random()
+                "Rhymes with: $selectedRhyme"
+            } else {
+                // If no rhymes, try thesaurus
+                val thesaurusResponse = wordApiService.getSynonyms(currentState.secretWord)
+                if (thesaurusResponse.isSuccessful && !thesaurusResponse.body()?.synonyms.isNullOrEmpty()) {
+                    val synonyms = thesaurusResponse.body()!!.synonyms
+                    val selectedSynonym = synonyms.random()
+                    "Similar to: $selectedSynonym"
+                } else {
+                    // Fallback to simple hint
+                    generateSimpleHint(currentState.secretWord)
+                }
+            }
+        } catch (e: Exception) {
+            // Network error fallback
+            generateSimpleHint(currentState.secretWord)
+        }
         
         val newState = currentState.copy(hintsUsed = currentState.hintsUsed + 1)
         _gameState.value = newState
@@ -168,9 +189,11 @@ class WordRepository @Inject constructor(
     private fun generateSimpleHint(word: String): String {
         val hints = listOf(
             "The word has ${word.length} letters",
-            "The word starts with '${word.first()}'",
-            "The word ends with '${word.last()}'",
-            "The word contains the letter '${word[word.length / 2]}'"
+            "It starts with '${word.first()}'",
+            "It ends with '${word.last()}'",
+            "It contains the letter '${word[word.length / 2]}'",
+            "Think about words in this category",
+            "It's a common English word"
         )
         return hints.random()
     }

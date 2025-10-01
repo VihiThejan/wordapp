@@ -2,6 +2,7 @@ package com.example.wordapp.di
 
 import com.example.wordapp.BuildConfig
 import com.example.wordapp.data.remote.WordApiService
+import com.example.wordapp.data.remote.DreamloApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,6 +19,10 @@ import javax.inject.Singleton
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class ApiNinjasRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DreamloRetrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -77,5 +82,24 @@ object NetworkModule {
     @Singleton
     fun provideWordApiService(@ApiNinjasRetrofit retrofit: Retrofit): WordApiService {
         return retrofit.create(WordApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    @DreamloRetrofit
+    fun provideDreamloRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://dreamlo.com/")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDreamloApiService(
+        @DreamloRetrofit retrofit: Retrofit
+    ): DreamloApiService {
+        return retrofit.create(DreamloApiService::class.java)
     }
 }

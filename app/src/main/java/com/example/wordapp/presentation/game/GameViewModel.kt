@@ -6,6 +6,7 @@ import com.example.wordapp.data.local.PreferencesManager
 import com.example.wordapp.data.model.GameState
 import com.example.wordapp.data.model.GameStatus
 import com.example.wordapp.data.repository.WordRepository
+import com.example.wordapp.data.repository.LeaderboardRepository
 import com.example.wordapp.util.GameTimer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,7 +22,8 @@ import javax.inject.Inject
 @HiltViewModel
 class GameViewModel @Inject constructor(
     private val wordRepository: WordRepository,
-    private val preferencesManager: PreferencesManager
+    private val preferencesManager: PreferencesManager,
+    private val leaderboardRepository: LeaderboardRepository
 ) : ViewModel() {
 
     private val gameTimer = GameTimer()
@@ -123,6 +125,9 @@ class GameViewModel @Inject constructor(
             // Increment games played
             preferencesManager.gamesPlayed = preferencesManager.gamesPlayed + 1
             
+            // Submit score to leaderboard
+            submitScoreToLeaderboard(gameState.currentScore, completionTime, gameState.level)
+            
             _uiEvents.emit(
                 GameUiEvent.ShowLevelComplete(
                     gameState.currentScore,
@@ -130,6 +135,22 @@ class GameViewModel @Inject constructor(
                     gameState.level
                 )
             )
+        }
+    }
+
+    private fun submitScoreToLeaderboard(score: Int, completionTimeMs: Long, level: Int) {
+        viewModelScope.launch {
+            try {
+                leaderboardRepository.submitScore(
+                    playerName = preferencesManager.userName ?: "Player",
+                    score = score,
+                    completionTimeMs = completionTimeMs,
+                    level = level
+                )
+            } catch (e: Exception) {
+                // Silent fail for leaderboard submission - don't interrupt game flow
+                // Could add logging here in production
+            }
         }
     }
 
@@ -155,11 +176,7 @@ class GameViewModel @Inject constructor(
         val result = wordRepository.checkLetterOccurrence(letter)
         
         result.onSuccess { count ->
-            // Deduct 5 points for the letter check
-            val newState = currentState.copy(
-                score = maxOf(0, currentState.score - 5)
-            )
-            _gameState.value = newState
+            // Deduct 5 points for the letter check - this is handled in the repository
             
             val message = when (count) {
                 0 -> "❌ Letter '$letter' is not in the word! (-5 points)"

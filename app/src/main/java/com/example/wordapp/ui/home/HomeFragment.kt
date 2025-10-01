@@ -21,6 +21,7 @@ import com.example.wordapp.presentation.game.GameUiEvent
 import com.example.wordapp.presentation.game.GameViewModel
 import com.example.wordapp.presentation.game.GuessHistoryAdapter
 import com.example.wordapp.presentation.game.GuessHistoryItem
+import com.example.wordapp.ui.leaderboard.LeaderboardFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -80,6 +81,10 @@ class HomeFragment : Fragment() {
 
         binding.btnNewGame.setOnClickListener {
             gameViewModel.startNewGame()
+        }
+
+        binding.btnLeaderboard.setOnClickListener {
+            showLeaderboard()
         }
     }
 
@@ -217,25 +222,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun showLetterCheckDialog() {
-        val input = EditText(requireContext()).apply {
-            hint = "Enter a letter (A-Z)"
-            filters = arrayOf(android.text.InputFilter.LengthFilter(1))
+        val currentState = gameViewModel.gameState.value
+        
+        com.example.wordapp.presentation.dialogs.LetterCheckDialog.show(
+            requireContext(),
+            currentState.currentScore
+        ) { letter ->
+            gameViewModel.checkLetter(letter)
         }
-
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Check Letter (5 points)")
-            .setMessage("Enter a letter to check how many times it appears in the word:")
-            .setView(input)
-            .setPositiveButton("Check") { _, _ ->
-                val letter = input.text.toString().uppercase().firstOrNull()
-                if (letter != null && letter.isLetter()) {
-                    gameViewModel.checkLetter(letter)
-                } else {
-                    Snackbar.make(binding.root, "Please enter a valid letter!", Snackbar.LENGTH_SHORT).show()
-                }
-            }
-            .setNegativeButton("Cancel", null)
-            .show()
     }
 
     private fun showLevelCompleteDialog(score: Int, time: Long, level: Int) {
@@ -276,6 +270,15 @@ class HomeFragment : Fragment() {
         val minutes = seconds / 60
         val remainingSeconds = seconds % 60
         return String.format("%02d:%02d", minutes, remainingSeconds)
+    }
+
+    private fun showLeaderboard() {
+        val leaderboardFragment = LeaderboardFragment()
+        
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment_activity_main, leaderboardFragment)
+            .addToBackStack("leaderboard")
+            .commit()
     }
 
     override fun onDestroyView() {
