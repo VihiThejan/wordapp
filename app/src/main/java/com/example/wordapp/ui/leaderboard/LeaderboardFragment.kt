@@ -42,6 +42,9 @@ class LeaderboardFragment : Fragment() {
         setupRecyclerView()
         setupClickListeners()
         observeViewModel()
+        
+        // Show info about local storage mode
+        showSnackbar("Leaderboard is now using local storage (API temporarily disabled)")
     }
 
     private fun setupToolbar() {
@@ -171,7 +174,7 @@ class LeaderboardFragment : Fragment() {
             // Re-enable button after submissions
             binding.btnAddSampleScores.isEnabled = true
             
-            showSnackbar("Sample scores added! Check the leaderboard.")
+            showSnackbar("Sample scores added to local storage! Check the leaderboard.")
         }
     }
 

@@ -73,7 +73,7 @@
                 android:hint="Player Name"
                 app:boxStrokeColor="@color/purple_500"
                 app:hintTextColor="@color/purple_700"
-                app:startIconDrawable="@drawable/ic_notifications_black_24dp"
+                app:startIconDrawable="@drawable/ic_search_black_24dp"
                 app:startIconTint="@color/purple_500"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 

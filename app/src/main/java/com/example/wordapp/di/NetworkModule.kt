@@ -45,9 +45,16 @@ object NetworkModule {
     fun provideApiKeyInterceptor(): Interceptor {
         return Interceptor { chain ->
             val originalRequest = chain.request()
-            val newRequest = originalRequest.newBuilder()
-                .header("X-Api-Key", BuildConfig.API_NINJAS_KEY)
-                .build()
+            
+            // Only add API key for API Ninjas requests, not for Dreamlo
+            val newRequest = if (originalRequest.url.host.contains("api-ninjas.com")) {
+                originalRequest.newBuilder()
+                    .header("X-Api-Key", BuildConfig.API_NINJAS_KEY)
+                    .build()
+            } else {
+                originalRequest
+            }
+            
             chain.proceed(newRequest)
         }
     }
@@ -89,7 +96,7 @@ object NetworkModule {
     @DreamloRetrofit
     fun provideDreamloRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://dreamlo.com/")
+            .baseUrl("http://dreamlo.com/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

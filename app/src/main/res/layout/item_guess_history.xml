@@ -43,7 +43,7 @@
             android:id="@+id/ivGuessResult"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_notifications_black_24dp"
+            android:src="@drawable/ic_check_circle_black_24dp"
             android:tint="@android:color/holo_red_dark" />
 
     </LinearLayout>

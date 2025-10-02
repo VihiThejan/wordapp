@@ -39,7 +39,7 @@ class GuessHistoryAdapter : ListAdapter<GuessHistoryItem, GuessHistoryAdapter.Gu
                     ContextCompat.getColor(binding.root.context, R.color.success_green)
                 )
             } else {
-                binding.ivGuessResult.setImageResource(R.drawable.ic_notifications_black_24dp)
+                binding.ivGuessResult.setImageResource(R.drawable.ic_check_circle_black_24dp)
                 binding.ivGuessResult.setColorFilter(
                     ContextCompat.getColor(binding.root.context, R.color.error_red)
                 )

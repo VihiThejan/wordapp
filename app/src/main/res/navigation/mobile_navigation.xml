@@ -14,12 +14,6 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.wordapp.ui.leaderboard.LeaderboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.wordapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
 </navigation>

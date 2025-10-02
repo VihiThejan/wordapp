@@ -12,13 +12,11 @@ interface DreamloApiService {
         @Path("publicKey") publicKey: String
     ): Response<LeaderboardResponse>
     
-    @GET("dreamlo/{privateKey}/add/{name}/{score}/{seconds}/{level}")
+    @GET("dreamlo/{privateKey}/add/{name}/{score}")
     suspend fun addLeaderboardEntry(
         @Path("privateKey") privateKey: String,
         @Path("name") name: String,
-        @Path("score") score: Int,
-        @Path("seconds") seconds: Long,
-        @Path("level") level: Int
+        @Path("score") score: Int
     ): Response<String>
     
     @GET("dreamlo/{privateKey}/clear")
