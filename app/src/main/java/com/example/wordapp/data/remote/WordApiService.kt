@@ -9,15 +9,12 @@ import retrofit2.http.Query
 interface WordApiService {
     
     @GET("v1/randomword")
-    @Headers("X-Api-Key: {api_key}")
     suspend fun getRandomWord(): Response<WordApiResponse>
     
     @GET("v1/rhyme")
-    @Headers("X-Api-Key: {api_key}")
     suspend fun getRhymes(@Query("word") word: String): Response<RhymeResponse>
     
     @GET("v1/thesaurus")
-    @Headers("X-Api-Key: {api_key}")
     suspend fun getSynonyms(@Query("word") word: String): Response<ThesaurusResponse>
 }
 

@@ -68,6 +68,10 @@ class LeaderboardFragment : Fragment() {
             viewModel.loadLeaderboard()
         }
 
+        binding.btnAddSampleScores.setOnClickListener {
+            addSampleScores()
+        }
+
         binding.fabPlayGame.setOnClickListener {
             // Navigate back to game
             findNavController().navigateUp()
@@ -149,6 +153,25 @@ class LeaderboardFragment : Fragment() {
                 tvPlayerStats.text = "Score: ${stats.score} | Time: ${stats.getFormattedTime()} | Level: ${stats.level}"
                 tvPlayerRank.text = "#${stats.rank}"
             }
+        }
+    }
+
+    private fun addSampleScores() {
+        // Disable button to prevent multiple submissions
+        binding.btnAddSampleScores.isEnabled = false
+        
+        // Submit sample scores with different player names
+        viewModel.submitCustomScore("AliceGamer", 1250, 95000L, 3)  // Score: 1250, Time: 1:35, Level: 3
+        
+        // Add a slight delay and submit another score
+        viewLifecycleOwner.lifecycleScope.launch {
+            kotlinx.coroutines.delay(2000)
+            viewModel.submitCustomScore("BobWordMaster", 980, 120000L, 2)  // Score: 980, Time: 2:00, Level: 2
+            
+            // Re-enable button after submissions
+            binding.btnAddSampleScores.isEnabled = true
+            
+            showSnackbar("Sample scores added! Check the leaderboard.")
         }
     }
 

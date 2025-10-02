@@ -206,11 +206,18 @@ class GameViewModel @Inject constructor(
     }
 
     fun getHint() {
-        if (!gameState.value.canUseHint) {
-            val attemptsLeft = gameState.value.attemptsRemaining
-            _uiState.value = _uiState.value.copy(
-                message = "Hints available after 5 wrong attempts! (${10 - attemptsLeft}/5)"
-            )
+        val currentState = gameState.value
+        if (!currentState.canUseHint) {
+            val attemptsUsed = 10 - currentState.attemptsRemaining
+            if (currentState.hintsUsed > 0) {
+                _uiState.value = _uiState.value.copy(
+                    message = "You've already used your hint for this game!"
+                )
+            } else {
+                _uiState.value = _uiState.value.copy(
+                    message = "Hints available after 5 wrong attempts! ($attemptsUsed/5)"
+                )
+            }
             return
         }
 

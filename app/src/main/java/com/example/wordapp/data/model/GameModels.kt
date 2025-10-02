@@ -13,7 +13,7 @@ data class GameState(
     val wordLengthRevealed: Boolean = false
 ) {
     val canUseHint: Boolean
-        get() = attemptsRemaining <= 5 && hintsUsed == 0
+        get() = (10 - attemptsRemaining) >= 5 && hintsUsed == 0
         
     val canCheckLetter: Boolean
         get() = currentScore >= 5

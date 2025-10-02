@@ -34,12 +34,12 @@ class GuessHistoryAdapter : ListAdapter<GuessHistoryItem, GuessHistoryAdapter.Gu
             
             // Set appropriate icon and color based on correctness
             if (item.isCorrect) {
-                binding.ivGuessResult.setImageResource(android.R.drawable.ic_input_add)
+                binding.ivGuessResult.setImageResource(R.drawable.ic_home_black_24dp)
                 binding.ivGuessResult.setColorFilter(
                     ContextCompat.getColor(binding.root.context, R.color.success_green)
                 )
             } else {
-                binding.ivGuessResult.setImageResource(android.R.drawable.ic_delete)
+                binding.ivGuessResult.setImageResource(R.drawable.ic_notifications_black_24dp)
                 binding.ivGuessResult.setColorFilter(
                     ContextCompat.getColor(binding.root.context, R.color.error_red)
                 )

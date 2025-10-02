@@ -1,8 +1,17 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     id("kotlin-kapt")
+}
+
+// Load local properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use { localProperties.load(it) }
 }
 
 android {
@@ -19,9 +28,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
         // API Keys configuration
-        buildConfigField("String", "API_NINJAS_KEY", "\"${project.findProperty("API_NINJAS_KEY") ?: ""}\"")
-        buildConfigField("String", "DREAMLO_PUBLIC_KEY", "\"${project.findProperty("DREAMLO_PUBLIC_KEY") ?: ""}\"")
-        buildConfigField("String", "DREAMLO_PRIVATE_KEY", "\"${project.findProperty("DREAMLO_PRIVATE_KEY") ?: ""}\"")
+        buildConfigField("String", "API_NINJAS_KEY", "\"${localProperties.getProperty("API_NINJAS_KEY", "")}\"")
+        buildConfigField("String", "DREAMLO_PUBLIC_KEY", "\"${localProperties.getProperty("DREAMLO_PUBLIC_KEY", "")}\"")
+        buildConfigField("String", "DREAMLO_PRIVATE_KEY", "\"${localProperties.getProperty("DREAMLO_PRIVATE_KEY", "")}\"")
     }
 
     buildTypes {
@@ -73,6 +82,10 @@ dependencies {
     
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    
+    // Additional UI components for leaderboard
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

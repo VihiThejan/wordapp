@@ -1,0 +1,234 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 264241152 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3603), pid=24896, tid=33356
+#
+# JRE version:  (21.0.8+12) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (21.0.8+12-LTS-250, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Djava.awt.headless=true -Djava.library.path=C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python313\Scripts\;C:\Python313\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;D:\software\node\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\vihin\AppData\Local\Muse Hub\lib;C:\php-8.4.8;C:\ProgramData\ComposerSetup\bin;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\vihin\AppData\Local\Microsoft\WindowsApps;C:\Users\vihin\AppData\Local\GitHubDesktop\bin;D:\software\Microsoft VS Code\bin;C:\Users\vihin\AppData\Roaming\npm;D:\software\cursor\resources\app\bin;C:\Users\vihin\AppData\Roaming\Composer\vendor\bin;;c:\Users\vihin\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;.;C:\Users\vihin\AndroidStudioProjects\wordapp\app\src\testDebug\jniLibs;C:\Users\vihin\AndroidStudioProjects\wordapp\app\src\test\jniLibs -Dorg.gradle.internal.worker.tmpdir=C:\Users\vihin\AndroidStudioProjects\wordapp\app\build\tmp\testDebugUnitTest\work --add-opens=java.base/java.io=ALL-UNNAMED -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+
+Host: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz, 8 cores, 15G,  Windows 11 , 64 bit Build 26100 (10.0.26100.5074)
+Time: Fri Oct  3 00:45:47 2025 Sri Lanka Standard Time elapsed time: 2.129283 seconds (0d 0h 0m 2s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000026851bbe5b0):  JavaThread "Unknown thread" [_thread_in_vm, id=33356, stack(0x0000006d7fb00000,0x0000006d7fc00000) (1024K)]
+
+Stack: [0x0000006d7fb00000,0x0000006d7fc00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6cc179]
+V  [jvm.dll+0x8584c1]
+V  [jvm.dll+0x85a9ee]
+V  [jvm.dll+0x85b0c3]
+V  [jvm.dll+0x27ebf6]
+V  [jvm.dll+0x6c88f5]
+V  [jvm.dll+0x6bd45a]
+V  [jvm.dll+0x354b1a]
+V  [jvm.dll+0x35c796]
+V  [jvm.dll+0x3af85e]
+V  [jvm.dll+0x3afb08]
+V  [jvm.dll+0x328e2c]
+V  [jvm.dll+0x32998b]
+V  [jvm.dll+0x821879]
+V  [jvm.dll+0x3bc541]
+V  [jvm.dll+0x80aaf8]
+V  [jvm.dll+0x45172e]
+V  [jvm.dll+0x453321]
+C  [jli.dll+0x52a3]
+C  [ucrtbase.dll+0x37b0]
+C  [KERNEL32.DLL+0x2e8d7]
+C  [ntdll.dll+0x8d9c]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffdb1e8fc48, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x0000026853d54d50 WorkerThread "GC Thread#0"                     [id=26372, stack(0x0000006d7fc00000,0x0000006d7fd00000) (1024K)]
+  0x0000026853d5ac50 ConcurrentGCThread "G1 Main Marker"            [id=26148, stack(0x0000006d7fd00000,0x0000006d7fe00000) (1024K)]
+  0x0000026853d5b660 WorkerThread "G1 Conc#0"                       [id=11220, stack(0x0000006d7fe00000,0x0000006d7ff00000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffdb15fb5b7]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffdb1f00f50] Heap_lock - owner thread: 0x0000026851bbe5b0
+
+Heap address: 0x00000000e0000000, size: 512 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x00000000e0000000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffdb19e51e9]
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.094 Loaded shared library C:\Program Files\Java\jdk-21\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff763b20000 - 0x00007ff763b30000 	C:\Program Files\Java\jdk-21\bin\java.exe
+0x00007ffe59b60000 - 0x00007ffe59dc9000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffe58620000 - 0x00007ffe586e9000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffe56fb0000 - 0x00007ffe573a3000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffe56cf0000 - 0x00007ffe56e3b000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffe42040000 - 0x00007ffe42059000 	C:\Program Files\Java\jdk-21\bin\jli.dll
+0x00007ffe582b0000 - 0x00007ffe58364000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffe58bb0000 - 0x00007ffe58c59000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffe59a70000 - 0x00007ffe59b16000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffe583a0000 - 0x00007ffe584b8000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffe57bc0000 - 0x00007ffe57d84000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffe57650000 - 0x00007ffe57677000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffe58370000 - 0x00007ffe5839b000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffe573b0000 - 0x00007ffe574dd000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffe56f00000 - 0x00007ffe56fa3000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffe42020000 - 0x00007ffe4203b000 	C:\Program Files\Java\jdk-21\bin\VCRUNTIME140.dll
+0x00007ffe4d910000 - 0x00007ffe4d91b000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffe34230000 - 0x00007ffe344c3000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.5074_none_3e0d6f78e32fd63f\COMCTL32.dll
+0x00007ffe59a30000 - 0x00007ffe59a5f000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffe42010000 - 0x00007ffe4201c000 	C:\Program Files\Java\jdk-21\bin\vcruntime140_1.dll
+0x00007ffe144e0000 - 0x00007ffe1456e000 	C:\Program Files\Java\jdk-21\bin\msvcp140.dll
+0x00007ffdb12c0000 - 0x00007ffdb1fdd000 	C:\Program Files\Java\jdk-21\bin\server\jvm.dll
+0x00007ffe586f0000 - 0x00007ffe58764000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffe56b50000 - 0x00007ffe56bae000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffe49bb0000 - 0x00007ffe49be5000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffe56b30000 - 0x00007ffe56b44000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffe55ad0000 - 0x00007ffe55aeb000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffe301b0000 - 0x00007ffe301ba000 	C:\Program Files\Java\jdk-21\bin\jimage.dll
+0x00007ffe54520000 - 0x00007ffe54762000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffe58770000 - 0x00007ffe58aeb000 	C:\WINDOWS\System32\combase.dll
+0x00007ffe59450000 - 0x00007ffe59527000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffe42180000 - 0x00007ffe421bd000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffe57890000 - 0x00007ffe57929000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffe24570000 - 0x00007ffe2458f000 	C:\Program Files\Java\jdk-21\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.5074_none_3e0d6f78e32fd63f;C:\Program Files\Java\jdk-21\bin\server
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Djava.library.path=C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python313\Scripts\;C:\Python313\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;D:\software\node\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\vihin\AppData\Local\Muse Hub\lib;C:\php-8.4.8;C:\ProgramData\ComposerSetup\bin;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\vihin\AppData\Local\Microsoft\WindowsApps;C:\Users\vihin\AppData\Local\GitHubDesktop\bin;D:\software\Microsoft VS Code\bin;C:\Users\vihin\AppData\Roaming\npm;D:\software\cursor\resources\app\bin;C:\Users\vihin\AppData\Roaming\Composer\vendor\bin;;c:\Users\vihin\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;.;C:\Users\vihin\AndroidStudioProjects\wordapp\app\src\testDebug\jniLibs;C:\Users\vihin\AndroidStudioProjects\wordapp\app\src\test\jniLibs -Dorg.gradle.internal.worker.tmpdir=C:\Users\vihin\AndroidStudioProjects\wordapp\app\build\tmp\testDebugUnitTest\work --add-opens=java.base/java.io=ALL-UNNAMED -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=US -Duser.language=en -Duser.variant -ea 
+java_command: worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 1'
+java_class_path (initial): C:\\Users\\vihin\\.gradle\\caches\\8.13\\workerMain\\gradle-worker.jar;C:\\Users\\vihin\\AndroidStudioProjects\\wordapp\\app\\build\\intermediates\\classes\\debugUnitTest\\transformDebugUnitTestClassesWithAsm\\dirs;C:\\Users\\vihin\\AndroidStudioProjects\\wordapp\\app\\build\\intermediates\\java_res\\debugUnitTest\\processDebugUnitTestJavaRes\\out;C:\\Users\\vihin\\AndroidStudioProjects\\wordapp\\app\\build\\intermediates\\runtime_app_classes_jar\\debug\\bundleDebugClassesToRuntimeJar\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\c87f001169a46b0c006361af7c13b32d\\transformed\\viewbinding-8.13.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\100511e091d97bddca89506c8c16fc8a\\transformed\\navigation-runtime-release-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\9ae0bf80dfd6b4052eb35b42e5f161b7\\transformed\\navigation-common-release-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\7ab49c5454e87af7f375e01bd08e643e\\transformed\\navigation-fragment-2.9.5-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\f080100d7748d81b4bb9267e2e09edbe\\transformed\\navigation-fragment-ktx-2.9.5-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\eba2dbc5e65be8ef70b0b49f879ad16a\\transformed\\navigation-ui-ktx-2.9.5-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a442bffcebf9ae51d49a67a32678b4b3\\transformed\\navigation-ui-2.9.5-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\acdb2b1b6aafe6673d87079ed8269a10\\transformed\\material-1.13.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\ce2dfb9171b4deb3b9fb18d5b4a96e5f\\transformed\\constraintlayout-2.2.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\56683e3d0da21f2e61942e0c8929e21d\\transformed\\appcompat-resources-1.7.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\9dc31da94d57d525b29b9cdb7f9968ce\\transformed\\appcompat-1.7.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a4c146b8b1e0ca788c16ef8958d1500d\\transformed\\hilt-android-2.47-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\3d927767a61ece86ddb28136da7bbbea\\transformed\\recyclerview-1.3.2-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\3f993b725f44a1d6a37ac5d3646e303a\\transformed\\viewpager2-1.1.0-beta02-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\c7eccef7fdcbab861a8e61cf4f6733ee\\transformed\\fragment-ktx-1.6.2-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\3656006262c44d63a2614aead9319bac\\transformed\\fragment-1.6.2-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\d2baef1bdeb76ce022b6ea07c7eb4021\\transformed\\activity-1.8.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\129ad14eb71d479dc52eaad59d358abc\\transformed\\activity-ktx-1.8.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\beb58839f4b355a5d185bdbc2b7cdaf3\\transformed\\swiperefreshlayout-1.1.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\b46a6b00e4dbcefd74da29c272ec26e9\\transformed\\emoji2-views-helper-1.3.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\5f4bd822af0d0b7bc430bd0234d393a6\\transformed\\emoji2-1.3.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\94ac7c18b0e695bc9edfed2f31b78e66\\transformed\\drawerlayout-1.1.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\1673449fc334af95d7b7deec7be45d6e\\transformed\\coordinatorlayout-1.1.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\79abc69e0cab9e613c991688d5c9e622\\transformed\\slidingpanelayout-1.2.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\1920cb4337f439a23ff04c06ea19c395\\transformed\\transition-1.5.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\fde9b3062cc6fbfa5f539b145c69642e\\transformed\\dynamicanimation-1.1.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\267dc022ebb8158eabeee7b4ddf28dc8\\transformed\\vectordrawable-animated-1.1.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\7230b108f240097171e56a16d0f61d67\\transformed\\vectordrawable-1.1.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\6d22286e48d0871c2e2377a798b33455\\transformed\\viewpager-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a0fafe5f99e869cb40abc7adbe30ca26\\transformed\\customview-1.1.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\2f497505de5c8da64e9d07ae491ffae6\\transformed\\window-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\b372f8c5e9cfc93bf348c186b7fd71bf\\transformed\\loader-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\6e43c8cf02433b5f5953745ec870ac4c\\transformed\\core-1.17.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\133e34582ffb071b586e8747ef2e4028\\transformed\\customview-poolingcontainer-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\008e4401feb48ea0d18cd55e93fe4da5\\transformed\\graphics-shapes-release-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a08622fe5f37cde9a7ef0634ba5793bd\\transformed\\lifecycle-runtime-ktx-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\288e2ee88ab011a34055b9fa8198bdde\\transformed\\savedstate-ktx-1.3.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\6e972cfef75304c8ad062f04e41ae89c\\transformed\\savedstate-release-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.lifecycle\\lifecycle-common-jvm\\2.9.4\\ab739bccdb3541983385af169565c7c035d897e7\\lifecycle-common-jvm-2.9.4.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\84deb91d8539896937efbdb367dd4250\\transformed\\lifecycle-process-2.9.4-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\8534ae542fbf1bbf25b914a1537d4e5c\\transformed\\lifecycle-livedata-core-2.9.4-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\4748e0b7f6852184cd6b7cb8db87a32f\\transformed\\lifecycle-viewmodel-2.9.4-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\45482665228f17409e12d835a1a88e53\\transformed\\lifecycle-viewmodel-release-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\52089d3ec6f86fca1e1a9b1d54975f35\\transformed\\lifecycle-runtime-release-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\be7a2d162d63b7076af79bb561eb9713\\transformed\\lifecycle-livedata-core-ktx-2.9.4-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\e65239ceaace567d014a01784a440dea\\transformed\\lifecycle-livedata-2.9.4-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\21b1b5156b7d7ecf1808e3abbed89de0\\transformed\\lifecycle-livedata-ktx-2.9.4-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\375ade723944d2f894331418559d1238\\transformed\\lifecycle-viewmodel-ktx-2.9.4-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\71a5a96ef8a8f4aedc314cd62327f3ca\\transformed\\lifecycle-viewmodel-savedstate-release-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\fca82a841dc02e79d16aa915f24d1d2b\\transformed\\core-ktx-1.17.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.retrofit2\\converter-gson\\2.9.0\\fc93484fc67ab52b1e0ccbdaa3922d8a6678e097\\converter-gson-2.9.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.retrofit2\\retrofit\\2.9.0\\d8fdfbd5da952141a665a403348b74538efc05ff\\retrofit-2.9.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.okhttp3\\logging-interceptor\\4.11.0\\87fa769912b1f738f3c2dd87e3bca4d1d7f0e666\\logging-interceptor-4.11.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.okhttp3\\okhttp\\4.11.0\\436932d695b2c43f2c86b8111c596179cd133d56\\okhttp-4.11.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlinx\\kotlinx-coroutines-core-jvm\\1.8.1\\bb0e192bd7c2b6b8217440d36e9758e377e450\\kotlinx-coroutines-core-jvm-1.8.1.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlinx\\kotlinx-coroutines-android\\1.8.1\\73e2acdd18df99dd4849d99f188dff529fc0afe0\\kotlinx-coroutines-android-1.8.1.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\c61362e6195c23aadcfac7e1bddf472f\\transformed\\annotation-experimental-1.4.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\8c79e64b01500e25b9ff4b6facb01191\\transformed\\core-viewtree-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.okio\\okio-jvm\\3.2.0\\332d1c5dc82b0241cb1d35bb0901d28470cc89ca\\okio-jvm-3.2.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib-jdk8\\1.8.22\\b25c86d47d6b962b9cf0f8c3f320c8a10eea3dd1\\kotlin-stdlib-jdk8-1.8.22.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\1dd49a44ce1b61112cb8381c19aeb274\\transformed\\versionedparcelable-1.1.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.collection\\collection-ktx\\1.4.2\\2ad14aed781c4a73ed4dbb421966d408a0a06686\\collection-ktx-1.4.2.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.collection\\collection-jvm\\1.4.2\\bc60b5568a66d765a9fe8e266fd0c6c727e0b50b\\collection-jvm-1.4.2.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib-jdk7\\1.8.22\\4dabb8248310d833bb6a8b516024a91fd3d275c\\kotlin-stdlib-jdk7-1.8.22.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlinx\\kotlinx-serialization-core-jvm\\1.7.3\\1f226780b845ff9206474c05159245d861556249\\kotlinx-serialization-core-jvm-1.7.3.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\abdb11f5adec3cc0ed2e1e2b67fa5bea\\transformed\\cursoradapter-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.resourceinspection\\resourceinspection-annotation\\1.0.1\\8c21f8ff5d96d5d52c948707f7e4d6ca6773feef\\resourceinspection-annotation-1.0.1.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\6104ae3d57088dfa22de59c792bd82a8\\transformed\\cardview-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\6e04cb851509ea6024bcbb993a04f718\\transformed\\profileinstaller-1.4.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.constraintlayout\\constraintlayout-core\\1.1.1\\f7ab6170b99b9421bd4942846426ff820b552f7d\\constraintlayout-core-1.1.1.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a79ef3c59acd627445086174c0613c49\\transformed\\interpolator-1.0.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\dfd0ff1fc4712dabfe619375781af426\\transformed\\startup-runtime-1.1.1-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\397bab2fea1b402ce20a404e59e04741\\transformed\\tracing-1.2.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.concurrent\\concurrent-futures\\1.1.0\\50b7fb98350d5f42a4e49704b03278542293ba48\\concurrent-futures-1.1.0.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\8e1e3f78e950a2a34d72d84522f30873\\transformed\\core-runtime-2.2.0-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.arch.core\\core-common\\2.2.0\\5e1b8b81dfd5f52c56a8d53b18ca759c19a301f3\\core-common-2.2.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\androidx.annotation\\annotation-jvm\\1.9.1\\b17951747e38bf3986a24431b9ba0d039958aa5f\\annotation-jvm-1.9.1.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.0.21\\618b539767b4899b4660a83006e052b63f1db551\\kotlin-stdlib-2.0.21.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\23.0.0\\8cc20c07506ec18e0834947b84a864bfc094484e\\annotations-23.0.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.google.errorprone\\error_prone_annotations\\2.15.0\\38c8485a652f808c8c149150da4e5c2b0bd17f9a\\error_prone_annotations-2.15.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.google.dagger\\hilt-core\\2.47\\307f54674837a60ad0ba645a3be71e0af6516b0f\\hilt-core-2.47.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.google.dagger\\dagger\\2.47\\644dd9077c5c846a60a82648d04fc2998bc9f064\\dagger-2.47.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\d22bbb0e0455cb7662b2a75f574b306c\\transformed\\dagger-lint-aar-2.47-runtime.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.google.code.findbugs\\jsr305\\3.0.2\\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\\jsr305-3.0.2.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\javax.inject\\javax.inject\\1\\6975da39a7040257bd51d21a231b76c915872d38\\javax.inject-1.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.google.code.gson\\gson\\2.8.5\\f645ed69d595b24d4cf8b3fbb64cc505bede8829\\gson-2.8.5.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\com.google.guava\\listenablefuture\\1.0\\c949a840a6acbc5268d088e47b04177bf90b3cad\\listenablefuture-1.0.jar;C:\\Users\\vihin\\.gradle\\caches\\modules-2\\files-2.1\\org.jspecify\\jspecify\\1.0.0\\7425a601c1c7ec76645a78d22b8c6a627edee507\\jspecify-1.0.0.jar;C:\\Users\\vihin\\AndroidStudioProjects\\wordapp\\app\\build\\intermediates\\java_res\\debug\\processDebugJavaRes\\out;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\623854672f8dc3b07fcb16eb56320984\\transformed\\viewbinding-8.13.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\375bbc82c5295dd72eec9b4a36066a62\\transformed\\navigation-runtime-release\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\91094e18352d77acae32cba63424e58e\\transformed\\navigation-common-release\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\57e15b8b8cc7b4744ae1a4c270bd531b\\transformed\\navigation-fragment-2.9.5\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\532f0fe3171866eae3a6adf6d9815324\\transformed\\navigation-fragment-ktx-2.9.5\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\6a10cb44db10974c90df10ca75b6c090\\transformed\\navigation-ui-ktx-2.9.5\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\41cfd6ac930e1db584007b3e4eadaa23\\transformed\\navigation-ui-2.9.5\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\9b6b271a0d43df6452f43f6a2418904f\\transformed\\material-1.13.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\224544987c9cb8923ff2f3c6c8a8b743\\transformed\\constraintlayout-2.2.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\4fef83ae392a4ca67f4d68c309a11940\\transformed\\appcompat-resources-1.7.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\10bbc730d8613df98e56c3b39e460434\\transformed\\appcompat-1.7.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a291b1ad937bb996f07663e683a0dd5f\\transformed\\hilt-android-2.47\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\d2c86aeaa867c35b11138b561987c147\\transformed\\recyclerview-1.3.2\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\b6687b59971c876a0043ec8b5c6796bb\\transformed\\viewpager2-1.1.0-beta02\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a9fcb303e917e6255d62a3ff1c118eb5\\transformed\\fragment-ktx-1.6.2\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\0ab06577ad99469f19894f813fe52bd8\\transformed\\fragment-1.6.2\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a8bcd10202dc96847728948320f03834\\transformed\\activity-1.8.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\8adc8176cc207dda94f50b13aaae893d\\transformed\\activity-ktx-1.8.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\77bd02cc39d7cb84c5e35e937c767f04\\transformed\\swiperefreshlayout-1.1.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\e073f580bb7c5e1273f08ac6b92283e5\\transformed\\emoji2-views-helper-1.3.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\bc104ee1d7b86e4c0731838eee5d9711\\transformed\\emoji2-1.3.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\bc104ee1d7b86e4c0731838eee5d9711\\transformed\\emoji2-1.3.0\\jars\\libs\\repackaged.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\e5b57268a49d3260af764bb6c5a0044e\\transformed\\drawerlayout-1.1.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\dc57c8e27ba5473a67614525eaedc16d\\transformed\\coordinatorlayout-1.1.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\45eabfc36d40d58de5400971cd871439\\transformed\\slidingpanelayout-1.2.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\d1f49e308d20dd9dd81055de874cbf27\\transformed\\transition-1.5.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\1d56c3a1fc36cab2d60bc203eeb6131d\\transformed\\dynamicanimation-1.1.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\e4db9546f183e264266f45af0fb70aee\\transformed\\vectordrawable-animated-1.1.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\9409a67e9fbad073164de70d920369c7\\transformed\\vectordrawable-1.1.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\1800f87dab3d2fff3a52cbf77bfce48c\\transformed\\viewpager-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\d6cc8da6d5fa1712ac893a49227e52f6\\transformed\\customview-1.1.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\ec9bf19d10168a8fa50a631be89354a7\\transformed\\window-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\44f6d8875148234ca15b199e957bc10e\\transformed\\loader-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\1c7b290d617c7b2de165578fdb6170ff\\transformed\\core-1.17.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\47fc122d6d471118a9ffbc22fe5bf4ef\\transformed\\customview-poolingcontainer-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\98b42a9d41fd5c6a044cdf79135b652b\\transformed\\graphics-shapes-release\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\55d506fd7ceae28e6d3bdd2e0a0ff440\\transformed\\lifecycle-runtime-ktx\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\b7f8f44831a33951c860c4395aba1b9e\\transformed\\savedstate-ktx-1.3.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\8dae8f9b71a31440993456aedc3183fd\\transformed\\savedstate-release\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\77fec0b20e224b5152cf7bae3fd6958e\\transformed\\lifecycle-process-2.9.4\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\4f9c0f44c3dfee81f6fc1e934dc8974c\\transformed\\lifecycle-livedata-core-2.9.4\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\33a777d5efce1b46826cd1193fb2fe25\\transformed\\lifecycle-viewmodel-2.9.4\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\60673f6d1ad655881fe677eeb7ce7fa4\\transformed\\lifecycle-viewmodel-release\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\16afd2be81d2e6de16fabddcf0c69929\\transformed\\lifecycle-runtime-release\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\c3ee3ccfd1c599195a7fc425ae377f3b\\transformed\\lifecycle-livedata-core-ktx-2.9.4\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\ddf412d884a0815a5a9e8442558cffbd\\transformed\\lifecycle-livedata-2.9.4\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\1b6e32c6e41e7fd3ba7d997e5de44431\\transformed\\lifecycle-livedata-ktx-2.9.4\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\9795b8ad046ab2e530c1108a70d34a98\\transformed\\lifecycle-viewmodel-ktx-2.9.4\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\d12a36dcc032e0349ce230c3e42412f3\\transformed\\lifecycle-viewmodel-savedstate-release\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\485b04605bd7c418ff157e2a7dd37b3d\\transformed\\core-ktx-1.17.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\bdb9f12b19bb7971b3716c850a22e481\\transformed\\annotation-experimental-1.4.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\a700e62020b394714c9d85e3f051db52\\transformed\\core-viewtree-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\78876f17194a36de7e0a6b44e3535c28\\transformed\\versionedparcelable-1.1.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\9781254db355e41a2fcf754f47ddf4cb\\transformed\\cursoradapter-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\5c46b78344683632d7d0c5538db1add7\\transformed\\cardview-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\5c977be95ad64b7d21f77eb9153e6cfc\\transformed\\profileinstaller-1.4.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\8a2b2984fc51b38d9bd2b0e2478fd1c5\\transformed\\interpolator-1.0.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\c2d061d9e6431d9d64fc09a8e9d49098\\transformed\\startup-runtime-1.1.1\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\bf633b36e4d54dda0e45a2c80198fa40\\transformed\\tracing-1.2.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\3d07054e2795e5800d6fe51d50940523\\transformed\\core-runtime-2.2.0\\jars\\classes.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\0865c5fe5f8fc2fd65e51b344ee13472\\transformed\\dagger-lint-aar-2.47\\jars\\classes.jar;C:\\Users\\vihin\\AndroidStudioProjects\\wordapp\\app\\build\\intermediates\\compile_and_runtime_not_namespaced_r_class_jar\\debug\\processDebugResources\\R.jar;C:\\Users\\vihin\\.gradle\\caches\\8.13\\transforms\\5c03d5090548afbd1b78873e3b1fc48d\\transformed\\android.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 264241152                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 536870912                                 {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 536870912                              {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+CLASSPATH=C:\Users\vihin\AndroidStudioProjects\wordapp\\gradle\wrapper\gradle-wrapper.jar
+PATH=C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python313\Scripts\;C:\Python313\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;D:\software\node\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\vihin\AppData\Local\Muse Hub\lib;C:\php-8.4.8;C:\ProgramData\ComposerSetup\bin;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\vihin\AppData\Local\Microsoft\WindowsApps;C:\Users\vihin\AppData\Local\GitHubDesktop\bin;D:\software\Microsoft VS Code\bin;C:\Users\vihin\AppData\Roaming\npm;D:\software\cursor\resources\app\bin;C:\Users\vihin\AppData\Roaming\Composer\vendor\bin;;c:\Users\vihin\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+USERNAME=vihin
+LANG=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+TMP=C:\Users\vihin\AppData\Local\Temp
+TEMP=C:\Users\vihin\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.5074)
+OS uptime: 11 days 1:13 hours
+Hyper-V role detected
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 140 stepping 1 microcode 0xbc, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, avx512f, avx512dq, avx512cd, avx512bw, avx512vl, sha, fma, vzeroupper, avx512_vpopcntdq, avx512_vpclmulqdq, avx512_vaes, avx512_vnni, clflush, clflushopt, clwb, avx512_vbmi2, avx512_vbmi, hv, rdtscp, rdpid, fsrm, gfni, avx512_bitalg, f16c, cet_ibt, cet_ss, avx512_ifma
+Processor Information for all 8 processors :
+  Max Mhz: 2803, Current Mhz: 2803, Mhz Limit: 2803
+
+Memory: 4k page, system-wide physical 16106M (1835M free)
+TotalPageFile size 41603M (AvailPageFile size 86M)
+current process WorkingSet (physical memory assigned to process): 12M, peak: 12M
+current process commit charge ("private bytes"): 60M, peak: 311M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (21.0.8+12-LTS-250) for windows-amd64 JRE (21.0.8+12-LTS-250), built on 2025-06-27T08:11:22Z by "mach5one" with MS VC++ 17.6 (VS2022)
+
+END.

@@ -13,10 +13,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wordapp.R
 import com.example.wordapp.data.model.GameStatus
-import com.example.wordapp.databinding.FragmentGameBinding
+import com.example.wordapp.databinding.FragmentHomeBinding
 import com.example.wordapp.presentation.game.GameUiEvent
 import com.example.wordapp.presentation.game.GameViewModel
 import com.example.wordapp.presentation.game.GuessHistoryAdapter
@@ -30,7 +31,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private var _binding: FragmentGameBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     
     private val gameViewModel: GameViewModel by viewModels()
@@ -41,7 +42,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentGameBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -224,12 +225,31 @@ class HomeFragment : Fragment() {
     private fun showLetterCheckDialog() {
         val currentState = gameViewModel.gameState.value
         
-        com.example.wordapp.presentation.dialogs.LetterCheckDialog.show(
-            requireContext(),
-            currentState.currentScore
-        ) { letter ->
-            gameViewModel.checkLetter(letter)
+        if (currentState.currentScore < 5) {
+            Snackbar.make(binding.root, "Not enough points! Need 5 points to check a letter.", Snackbar.LENGTH_LONG).show()
+            return
         }
+        
+        // Create a simple input dialog
+        val input = android.widget.EditText(requireContext())
+        input.inputType = android.text.InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+        input.hint = "Enter a letter (A-Z)"
+        input.filters = arrayOf(android.text.InputFilter.LengthFilter(1))
+        
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Check Letter Occurrence")
+            .setMessage("Cost: 5 points\n\nEnter a letter to check how many times it appears in the secret word:")
+            .setView(input)
+            .setPositiveButton("Check (5 pts)") { _, _ ->
+                val letter = input.text.toString().trim().uppercase()
+                if (letter.length == 1 && letter[0] in 'A'..'Z') {
+                    gameViewModel.checkLetter(letter[0])
+                } else {
+                    Snackbar.make(binding.root, "Please enter a valid letter (A-Z)", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     private fun showLevelCompleteDialog(score: Int, time: Long, level: Int) {
@@ -273,12 +293,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun showLeaderboard() {
-        val leaderboardFragment = LeaderboardFragment()
-        
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment_activity_main, leaderboardFragment)
-            .addToBackStack("leaderboard")
-            .commit()
+        // Use Navigation Component instead of manual fragment transactions
+        try {
+            findNavController().navigate(R.id.navigation_dashboard)
+        } catch (e: Exception) {
+            // Fallback to manual navigation if navigation component fails
+            val leaderboardFragment = com.example.wordapp.ui.leaderboard.LeaderboardFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment_activity_main, leaderboardFragment)
+                .addToBackStack("leaderboard")
+                .commit()
+        }
     }
 
     override fun onDestroyView() {

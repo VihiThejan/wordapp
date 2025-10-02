@@ -81,6 +81,30 @@ class LeaderboardViewModel @Inject constructor(
             }
         }
     }
+    
+    // Method for submitting scores with custom names (for testing/samples)
+    fun submitCustomScore(playerName: String, score: Int, completionTimeMs: Long, level: Int) {
+        viewModelScope.launch {
+            val result = leaderboardRepository.submitScore(
+                playerName = playerName,
+                score = score,
+                completionTimeMs = completionTimeMs,
+                level = level
+            )
+
+            result.onSuccess { message ->
+                _uiState.value = _uiState.value.copy(
+                    message = message
+                )
+                // Reload to show updated rankings
+                loadLeaderboard()
+            }.onFailure { error ->
+                _uiState.value = _uiState.value.copy(
+                    errorMessage = error.message ?: "Failed to submit score"
+                )
+            }
+        }
+    }
 
     fun clearMessage() {
         _uiState.value = _uiState.value.copy(message = null)
